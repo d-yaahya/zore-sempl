@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خطة مشروع ZORE AI Tailoring Platform</title>
+  <style>
+    :root {
+      --primary: #16423C;
+      --secondary: #6A9C89;
+      --soft: #C4DAD2;
+      --light: #E9EFEC;
+      --dark: #10231f;
+      --orange: #b96b2c;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --border: #dce8e3;
+      --shadow: 0 18px 45px rgba(16, 35, 31, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--light), #ffffff 45%, var(--light));
+      color: var(--dark);
+      line-height: 1.9;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary), #0b2520);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 48px 36px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(196, 218, 210, 0.12);
+      left: -80px;
+      top: -80px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(185, 107, 44, 0.18);
+      right: -70px;
+      bottom: -70px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: var(--soft);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.4;
+    }
+
+    h1 {
+      font-size: 38px;
+      max-width: 850px;
+    }
+
+    .hero p {
+      max-width: 860px;
+      font-size: 18px;
+      color: #eaf3ef;
+      margin: 0;
+    }
+
+    .section {
+      margin-top: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(16,35,31,0.05);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex: 0 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: #fbfdfc;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      font-size: 18px;
+    }
+
+    .card p {
+      color: var(--gray);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0 20px 0 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 120px;
+    }
+
+    .step span {
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      background: var(--light);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .highlight {
+      border-right: 5px solid var(--orange);
+      background: #fff8f1;
+      padding: 18px;
+      border-radius: 18px;
+      color: #553015;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 14px;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    td {
+      background: #ffffff;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--gray);
+      padding: 28px 0 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .grid-2, .flow {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .hero {
+        padding: 34px 22px;
+      }
+
+      .section {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">وثيقة تخطيط مبدئية — ZORE</div>
+        <h1>منصة زوري لتفصيل العبايات بالذكاء الاصطناعي وإدارة الطلبات والشركاء</h1>
+        <p>
+          هذه الصفحة مرجع مبسط لفكرة المشروع قبل البدء في البرمجة. الهدف بناء منصة متكاملة تسمح للعميل بتصميم عباية حسب اختياراته، توليد تصور بصري بالذكاء الاصطناعي، إرسال الطلب للإدارة أو الخياط، وإدارة كل شيء من لوحة تحكم قوية قابلة للتوسع لاحقًا للمتاجر، المصانع، المصممات، والمسوقات بالعمولة.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">01</div>
+        <h2>الرؤية العامة للمشروع</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>منصة تصميم</h3>
+          <p>العميل يبدأ التصميم خطوة بخطوة: القصة، اللون، القماش، الأكمام، الياقة، التطريز، والوصف النهائي.</p>
+        </div>
+        <div class="card">
+          <h3>ذكاء اصطناعي</h3>
+          <p>تحويل اختيارات العميل إلى وصف ذكي يتم إرساله للذكاء الاصطناعي لتوليد صورة العباية.</p>
+        </div>
+        <div class="card">
+          <h3>نظام تجاري قابل للتوسع</h3>
+          <p>يدعم لاحقًا المتاجر، المصانع، المصممات، المسوقات، الاشتراكات، والإعلانات داخل المنصة.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">02</div>
+        <h2>أنواع الحسابات داخل المنصة</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>العميل</h3>
+          <ul>
+            <li>تسجيل دخول بالبريد وكلمة المرور.</li>
+            <li>بدء تصميم عباية جديدة.</li>
+            <li>عرض التصاميم السابقة مع التاريخ والصورة والوصف.</li>
+            <li>إمكانية جعل التصميم عامًا في معرض العملاء أو مخفيًا.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>الإدارة</h3>
+          <ul>
+            <li>لوحة تحكم كاملة.</li>
+            <li>مستويات صلاحيات متعددة.</li>
+            <li>إضافة مدراء بدعوة عبر البريد.</li>
+            <li>إدارة الطلبات والمحتوى والتسويق والإعدادات.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>المبيعات والموظفون</h3>
+          <ul>
+            <li>متابعة الطلبات.</li>
+            <li>تغيير حالة الطلب.</li>
+            <li>تأكيد الدفع.</li>
+            <li>تحديث حالة التسليم.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>المسوقات بالعمولة</h3>
+          <ul>
+            <li>رابط تسويقي خاص.</li>
+            <li>احتساب العمولة عند إتمام الطلب.</li>
+            <li>لوحة متابعة للزيارات والطلبات والعمولات.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>المصممات والمبدعات</h3>
+          <ul>
+            <li>حسابات شخصية.</li>
+            <li>ملف أعمال.</li>
+            <li>إمكانية عرض التصاميم.</li>
+            <li>إضافتها لاحقًا كسوق داخلي.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>المتاجر والمصانع</h3>
+          <ul>
+            <li>لوحة تحكم خاصة.</li>
+            <li>هوية مستقلة تظهر للعميل بدل زوري.</li>
+            <li>إدارة الخيارات والأسعار.</li>
+            <li>نظام اشتراك شهري أو سنوي.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">03</div>
+        <h2>رحلة تصميم العباية للعميل</h2>
+      </div>
+      <div class="flow">
+        <div class="step"><span>1</span><strong>بدء التصميم</strong>الدخول للحساب ثم اختيار بدء تصميم عباية جديدة.</div>
+        <div class="step"><span>2</span><strong>اختيار القصة</strong>اختيار قصة جاهزة أو كتابة وصف مخصص أو رفع صورة مشابهة.</div>
+        <div class="step"><span>3</span><strong>اختيار اللون</strong>عرض ألوان متاحة وربط كل لون بالأقمشة المتوفرة منه.</div>
+        <div class="step"><span>4</span><strong>اختيار القماش</strong>عرض الأقمشة مع الصور والوصف والسعر والتوفر.</div>
+        <div class="step"><span>5</span><strong>الأكمام والياقة</strong>اختيار شكل الأكمام والياقة مع إمكانية إدخال نص أو رفع صورة.</div>
+        <div class="step"><span>6</span><strong>التطريز</strong>اختيار نوع ومكان وحجم التطريز مع وصف أو صورة مرجعية.</div>
+        <div class="step"><span>7</span><strong>الوصف النهائي</strong>تحويل كل الخيارات إلى نص قابل للتعديل من العميل قبل التوليد.</div>
+        <div class="step"><span>8</span><strong>توليد الصورة</strong>إرسال الوصف للذكاء الاصطناعي وتوليد صورة للعباية.</div>
+        <div class="step"><span>9</span><strong>التعديل</strong>السماح للعميل بعدد محدد من التعديلات على كل تصميم.</div>
+        <div class="step"><span>10</span><strong>إتمام الطلب</strong>عرض السعر التقريبي ثم إرسال الطلب للخياط أو فريق المبيعات.</div>
+        <div class="step"><span>11</span><strong>متابعة الطلب</strong>حالات الطلب تظهر للعميل داخل حسابه.</div>
+        <div class="step"><span>12</span><strong>الأعمال السابقة</strong>حفظ التصميم في حساب العميل مع التاريخ والصورة والوصف.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">04</div>
+        <h2>رصيد التوليد الأسبوعي</h2>
+      </div>
+      <div class="highlight">
+        لكل عميل رصيد أسبوعي: 3 تصميمات بالذكاء الاصطناعي، ولكل تصميم 3 تعديلات. يتجدد الرصيد تلقائيًا كل أسبوع. ويمكن لاحقًا إضافة باقات مدفوعة أو اشتراكات تمنح رصيدًا أكبر.
+      </div>
+      <br />
+      <div class="grid-2">
+        <div class="card">
+          <h3>الرصيد المجاني</h3>
+          <ul>
+            <li>3 تصميمات AI أسبوعيًا.</li>
+            <li>3 تعديلات لكل تصميم.</li>
+            <li>عداد واضح داخل حساب العميل.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>التطوير المستقبلي</h3>
+          <ul>
+            <li>شراء رصيد إضافي.</li>
+            <li>باقات VIP.</li>
+            <li>رصيد خاص للمتاجر والمصانع.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">05</div>
+        <h2>قالب الذكاء الاصطناعي من لوحة التحكم</h2>
+      </div>
+      <p>
+        لا يكون قالب الذكاء الاصطناعي ثابتًا داخل الكود، بل يتم التحكم فيه من لوحة الإدارة. يستطيع المدير تعديل أسلوب الصورة، الخلفية، طريقة عرض العباية، شروط عدم إظهار الوجه، جودة الصورة، والممنوعات.
+      </p>
+      <div class="card">
+        <h3>متغيرات القالب المقترحة</h3>
+        <div class="pill-list">
+          <span class="pill">{{cutType}}</span>
+          <span class="pill">{{color}}</span>
+          <span class="pill">{{fabric}}</span>
+          <span class="pill">{{sleeves}}</span>
+          <span class="pill">{{collar}}</span>
+          <span class="pill">{{embroidery}}</span>
+          <span class="pill">{{customerDescription}}</span>
+          <span class="pill">{{referenceImageNote}}</span>
+          <span class="pill">{{brandStyle}}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">06</div>
+        <h2>حالات الطلب</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>الحالة</th>
+              <th>المعنى</th>
+              <th>من يغيرها؟</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>مسودة</td>
+              <td>العميل بدأ التصميم ولم يرسله بعد.</td>
+              <td>النظام</td>
+            </tr>
+            <tr>
+              <td>تم التوليد</td>
+              <td>تم توليد صورة التصميم بالذكاء الاصطناعي.</td>
+              <td>النظام</td>
+            </tr>
+            <tr>
+              <td>قيد التنفيذ</td>
+              <td>تم إرسال الطلب لفريق زوري أو الخياط.</td>
+              <td>النظام / الإدارة</td>
+            </tr>
+            <tr>
+              <td>تم الدفع</td>
+              <td>تم تأكيد دفع العميل.</td>
+              <td>مسؤول المبيعات</td>
+            </tr>
+            <tr>
+              <td>تم التوصيل</td>
+              <td>تم تسليم الطلب للعميل.</td>
+              <td>الموظف المسؤول</td>
+            </tr>
+            <tr>
+              <td>ملغي</td>
+              <td>تم إلغاء الطلب لأي سبب.</td>
+              <td>الإدارة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">07</div>
+        <h2>لوحة التحكم الإدارية</h2>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>إدارة الموقع</h3><p>تعديل البنرات، النصوص، الروابط، الناف بار، الفوتر، زر العودة للمتجر، وإظهار أو إخفاء واتساب.</p></div>
+        <div class="card"><h3>إدارة الخيارات</h3><p>إضافة القصات، الألوان، الأقمشة، الأكمام، الياقات، التطريزات، الصور، الأسعار، والتوفر.</p></div>
+        <div class="card"><h3>إدارة الطلبات</h3><p>مشاهدة الطلبات، الصور، المواصفات، حالة الدفع، حالة التنفيذ، التوصيل، وملاحظات المبيعات.</p></div>
+        <div class="card"><h3>المدراء والصلاحيات</h3><p>إضافة مدراء، إرسال دعوات بريدية، تحديد صلاحيات حسب الدور والمهام.</p></div>
+        <div class="card"><h3>التسويق</h3><p>إرسال دعوات تجربة الموقع، حملات بريدية، روابط مسوقات، متابعة التحويلات والعمولات.</p></div>
+        <div class="card"><h3>التحليلات</h3><p>زيارات الموقع، أكثر القصات اختيارًا، أكثر الألوان طلبًا، معدل إكمال التصميم، الطلبات، والمبيعات.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">08</div>
+        <h2>الشركاء والاشتراكات المستقبلية</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>المتاجر الإلكترونية</h3>
+          <ul>
+            <li>ربط مع متاجر مثل زد وسلة لاحقًا.</li>
+            <li>رابط خاص لكل متجر.</li>
+            <li>ظهور هوية المتجر بدل زوري للعميل.</li>
+            <li>لوحة تحكم للتاجر لتعديل الخيارات والأسعار.</li>
+            <li>إرسال العمليات إلى بريد التاجر.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>المصانع</h3>
+          <ul>
+            <li>حساب مصنع باشتراك.</li>
+            <li>إضافة الأقمشة والخيارات والأسعار.</li>
+            <li>استقبال طلبات العملاء.</li>
+            <li>عرض أعمال المصنع أو شراء إعلان داخل الموقع.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">09</div>
+        <h2>الصفحات والمحتوى</h2>
+      </div>
+      <div class="pill-list">
+        <span class="pill">الرئيسية</span>
+        <span class="pill">بدء التصميم</span>
+        <span class="pill">معرض أعمالنا</span>
+        <span class="pill">أعمال العملاء</span>
+        <span class="pill">حسابي</span>
+        <span class="pill">طلباتي</span>
+        <span class="pill">من نحن</span>
+        <span class="pill">المدونة</span>
+        <span class="pill">سياسة الخصوصية</span>
+        <span class="pill">الشروط والأحكام</span>
+        <span class="pill">سياسة الاستخدام</span>
+        <span class="pill">العودة للمتجر zore-ksa.com</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">10</div>
+        <h2>التقنية المقترحة</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Frontend</h3>
+          <p>React + Vite لبناء واجهة تفاعلية مناسبة لمراحل التصميم ولوحة التحكم.</p>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <p>Node.js + Express لبناء API منظم وقابل للتوسع.</p>
+        </div>
+        <div class="card">
+          <h3>Database</h3>
+          <p>MongoDB لتخزين المستخدمين، الطلبات، الخيارات، التصاميم، الشركاء، والإعدادات.</p>
+        </div>
+        <div class="card">
+          <h3>Authentication</h3>
+          <p>JWT مع صلاحيات Roles للعميل والإدارة والموظفين والشركاء.</p>
+        </div>
+        <div class="card">
+          <h3>AI</h3>
+          <p>ربط OpenAI لتوليد الصور من قالب Prompt قابل للتعديل من لوحة التحكم.</p>
+        </div>
+        <div class="card">
+          <h3>Hosting</h3>
+          <p>رفع الكود على GitHub ثم نشر المشروع على Hostinger Node.js مع قاعدة MongoDB خارجية.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">11</div>
+        <h2>اقتراحات إضافية لتقوية المشروع</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>ميزات للعميل</h3>
+          <ul>
+            <li>حفظ التصميم كمسودة.</li>
+            <li>مشاركة التصميم عبر رابط.</li>
+            <li>تقييم تجربة التصميم بعد انتهاء الطلب.</li>
+            <li>نظام نقاط أو مكافآت للعملاء النشطين.</li>
+            <li>تنبيه عند تجدد رصيد التصميمات الأسبوعي.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>ميزات للإدارة</h3>
+          <ul>
+            <li>سجل نشاط لكل مدير.</li>
+            <li>تقارير شهرية للطلبات والتحويلات.</li>
+            <li>قوالب رسائل جاهزة للعملاء.</li>
+            <li>إشعارات بريدية وداخلية للطلبات المهمة.</li>
+            <li>تحليل أكثر الخيارات ربحية وطلبًا.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="icon">12</div>
+        <h2>مجلدات الصور المقترحة</h2>
+      </div>
+      <p>عند البدء في React + Vite، توضع الصور العامة داخل:</p>
+      <div class="highlight">
+        frontend/public/images
+      </div>
+      <br />
+      <div class="pill-list">
+        <span class="pill">logo</span>
+        <span class="pill">cuts</span>
+        <span class="pill">colors</span>
+        <span class="pill">fabrics</span>
+        <span class="pill">sleeves</span>
+        <span class="pill">collars</span>
+        <span class="pill">embroidery</span>
+        <span class="pill">banners</span>
+        <span class="pill">portfolio</span>
+        <span class="pill">customers</span>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      هذه الوثيقة مرجع تخطيطي أولي لمشروع ZORE قبل البدء في بناء قاعدة البيانات، الواجهة، ولوحة التحكم.
+    </div>
+  </main>
+</body>
+</html>
